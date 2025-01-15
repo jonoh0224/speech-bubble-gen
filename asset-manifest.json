@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/speech-bubble-gen/static/css/main.6200da01.css",
-    "main.js": "/speech-bubble-gen/static/js/main.82eda04f.js",
+    "main.css": "/speech-bubble-gen/static/css/main.99ffb59c.css",
+    "main.js": "/speech-bubble-gen/static/js/main.52bf42e6.js",
     "index.html": "/speech-bubble-gen/index.html",
-    "main.6200da01.css.map": "/speech-bubble-gen/static/css/main.6200da01.css.map",
-    "main.82eda04f.js.map": "/speech-bubble-gen/static/js/main.82eda04f.js.map"
+    "main.99ffb59c.css.map": "/speech-bubble-gen/static/css/main.99ffb59c.css.map",
+    "main.52bf42e6.js.map": "/speech-bubble-gen/static/js/main.52bf42e6.js.map"
   },
   "entrypoints": [
-    "static/css/main.6200da01.css",
-    "static/js/main.82eda04f.js"
+    "static/css/main.99ffb59c.css",
+    "static/js/main.52bf42e6.js"
   ]
 }
