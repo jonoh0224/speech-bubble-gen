@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/speech-bubble-gen/static/css/main.6200da01.css",
+    "main.js": "/speech-bubble-gen/static/js/main.82eda04f.js",
+    "index.html": "/speech-bubble-gen/index.html",
+    "main.6200da01.css.map": "/speech-bubble-gen/static/css/main.6200da01.css.map",
+    "main.82eda04f.js.map": "/speech-bubble-gen/static/js/main.82eda04f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6200da01.css",
+    "static/js/main.82eda04f.js"
+  ]
+}
