@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import TooltipGenerator from './TooltipGenerator';
+import BubbleGenerator from './BubbleGenerator';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TooltipGenerator />
+    <BubbleGenerator />
   </React.StrictMode>
 );

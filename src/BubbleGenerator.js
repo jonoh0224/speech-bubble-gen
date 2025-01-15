@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import { Copy, Wand2 } from 'lucide-react';
 
-function TooltipGenerator() {
+function BubbleGenerator() {
   const [backgroundColor, setBackgroundColor] = useState('#fdffe2');
   const [textColor, setTextColor] = useState('#000000');
   const [shadowEnabled, setShadowEnabled] = useState(true);
   const [triangleEnabled, setTriangleEnabled] = useState(true);
-  const [tooltipText, setTooltipText] = useState('This is a tooltip message!');
+  const [bubbleText, setBubbleText] = useState('This is a bubble message!');
   const [copiedHtml, setCopiedHtml] = useState(false);
   const [copiedCss, setCopiedCss] = useState(false);
-  const [trianglePosition, setTrianglePosition] = useState('top');
+  const [trianglePosition, setTrianglePosition] = useState('left');
   const [triangleSize, setTriangleSize] = useState(8);
   const [paddingX, setPaddingX] = useState(12);
   const [paddingY, setPaddingY] = useState(8);
   const [borderRadius, setBorderRadius] = useState(6);
 
   // 기존의 모든 함수들은 그대로 유지...
-  const generateTooltipStyles = () => {
+  const generateBubbleStyles = () => {
     const shadowStyle = shadowEnabled ? '\n  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));' : '';
     
     let triangleStyle = '';
@@ -59,7 +59,7 @@ function TooltipGenerator() {
         break;
     }
 
-    return `.tooltip {
+    return `.bubble {
   position: relative;
   display: inline-block;
   background-color: ${backgroundColor};
@@ -68,32 +68,32 @@ function TooltipGenerator() {
   border-radius: ${borderRadius}px;${shadowStyle}
 }
 
-.tooltip .tooltip-triangle {
+.bubble .bubble-triangle {
   position: absolute;
   width: 0;
   height: 0;${triangleStyle}
 }`;
   };
 
-  const generateTooltipHTML = () => {
-    return `<div class="tooltip">${triangleEnabled ? '\n  <div class="tooltip-triangle"></div>' : ''}
-  ${tooltipText}
+  const generateBubbleHTML = () => {
+    return `<div class="bubble">${triangleEnabled ? '\n  <div class="bubble-triangle"></div>' : ''}
+  ${bubbleText}
 </div>`;
   };
   
   const handleCopyHTML = () => {
-    navigator.clipboard.writeText(generateTooltipHTML());
+    navigator.clipboard.writeText(generateBubbleHTML());
     setCopiedHtml(true);
     setTimeout(() => setCopiedHtml(false), 2000);
   };
 
   const handleCopyCSS = () => {
-    navigator.clipboard.writeText(generateTooltipStyles());
+    navigator.clipboard.writeText(generateBubbleStyles());
     setCopiedCss(true);
     setTimeout(() => setCopiedCss(false), 2000);
   };
   
-  const previewTooltip = () => {
+  const previewBubble = () => {
     const triangleStyles = {
       position: 'absolute',
       width: 0,
@@ -146,7 +146,7 @@ function TooltipGenerator() {
           {triangleEnabled && (
             <div style={triangleStyles} />
           )}
-          {tooltipText}
+          {bubbleText}
         </div>
       </div>
     );
@@ -160,8 +160,8 @@ function TooltipGenerator() {
           <div className="flex items-center space-x-4">
             <Wand2 className="h-8 w-8 text-white" />
             <div>
-              <h1 className="text-3xl font-bold text-white">Tooltip Generator</h1>
-              <p className="mt-1 text-blue-100">커스텀 툴팁을 손쉽게 만들어보세요</p>
+              <h1 className="text-3xl font-bold text-white">Speech Bubble Generator</h1>
+              <p className="mt-1 text-blue-100">말풍선 디자인을 손쉽게 만들어보세요</p>
             </div>
           </div>
         </div>
@@ -171,7 +171,7 @@ function TooltipGenerator() {
       <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div className="space-y-4">
           <div className="bg-white p-6 rounded-lg shadow-sm">
-            <h2 className="text-lg font-semibold mb-3">Tooltip Settings</h2>
+            <h2 className="text-lg font-semibold mb-3">Bubble Settings</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex flex-col">
                 <label className="block text-sm font-medium text-gray-700 mb-1">Background Color</label>
@@ -273,11 +273,11 @@ function TooltipGenerator() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700">Tooltip Text</label>
+                <label className="block text-sm font-medium text-gray-700">Bubble Text</label>
                 <input
                   type="text"
-                  value={tooltipText}
-                  onChange={(e) => setTooltipText(e.target.value)}
+                  value={bubbleText}
+                  onChange={(e) => setBubbleText(e.target.value)}
                   className="mt-1 p-2 border rounded-md w-full"
                 />
               </div>
@@ -308,9 +308,9 @@ function TooltipGenerator() {
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-sm">
-            <h2 className="text-lg font-semibold mb-3">Tooltip Preview</h2>
+            <h2 className="text-lg font-semibold mb-3">Bubble Preview</h2>
             <div className="text-center p-4 bg-gray-50 rounded-md">
-              {previewTooltip()}
+              {previewBubble()}
             </div>
           </div>
 
@@ -319,7 +319,7 @@ function TooltipGenerator() {
               <h2 className="text-lg font-semibold mb-3">HTML Code</h2>
               <div className="relative">
                 <pre className="bg-gray-50 p-4 rounded-md overflow-auto whitespace-pre-wrap">
-                  {generateTooltipHTML()}
+                  {generateBubbleHTML()}
                 </pre>
                 <button
                   onClick={handleCopyHTML}
@@ -333,7 +333,7 @@ function TooltipGenerator() {
               <h2 className="text-lg font-semibold mb-3">CSS Code</h2>
               <div className="relative">
                 <pre className="bg-gray-50 p-4 rounded-md overflow-auto whitespace-pre-wrap">
-                  {generateTooltipStyles()}
+                  {generateBubbleStyles()}
                 </pre>
                 <button
                   onClick={handleCopyCSS}
@@ -349,3 +349,5 @@ function TooltipGenerator() {
     </div>
   );
 }
+
+export default BubbleGenerator;
