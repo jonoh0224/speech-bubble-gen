@@ -2,27 +2,36 @@ name: Deploy React App
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master ]  # 또는 master, 현재 기본 브랜치 이름을 사용
+
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     
     - name: Install Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: '18'
         
     - name: Install Dependencies
-      run: npm install
-      
+      run: |
+        npm install
+        npm install -D tailwindcss postcss autoprefixer
+        
     - name: Build
       run: npm run build
+      env:
+        CI: false
         
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: build
+        branch: gh-pages
+        clean: true
